@@ -17,7 +17,14 @@ flutter:
         default_package: url_launcher_android
       ios:
         default_package: url_launcher_ios
-
+      linux:
+        default_package: url_launcher_linux
+      macos:
+        default_package: url_launcher_macos
+      web:
+        default_package: url_launcher_web
+      windows:
+        default_package: url_launcher_windows
 
 dependencies:
   flutter:
@@ -28,8 +35,17 @@ dependencies:
     path: ../url_launcher_ios
   # Allow either the pure-native or Dart/native hybrid versions of the desktop
   # implementations, as both are compatible.
+  url_launcher_linux:
+    path: ../url_launcher_linux
+  url_launcher_macos:
+    path: ../url_launcher_macos
   url_launcher_platform_interface:
     path: ../url_launcher_platform_interface
+
+  url_launcher_web:
+    path: ../url_launcher_web
+  url_launcher_windows:
+    path: ../url_launcher_windows
 
 dev_dependencies:
   flutter_test:

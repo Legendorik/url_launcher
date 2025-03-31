@@ -163,6 +163,11 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_web_plugins:
+    dependency: transitive
+    description: flutter
+    source: sdk
+    version: "0.0.0"
   frontend_server_client:
     dependency: transitive
     description:
@@ -478,6 +483,20 @@ packages:
       relative: true
     source: path
     version: "6.3.2"
+  url_launcher_linux:
+    dependency: "direct main"
+    description:
+      path: "../url_launcher_linux"
+      relative: true
+    source: path
+    version: "3.2.1"
+  url_launcher_macos:
+    dependency: "direct main"
+    description:
+      path: "../url_launcher_macos"
+      relative: true
+    source: path
+    version: "3.2.2"
   url_launcher_platform_interface:
     dependency: "direct main"
     description:
@@ -485,6 +504,20 @@ packages:
       relative: true
     source: path
     version: "2.3.2"
+  url_launcher_web:
+    dependency: "direct main"
+    description:
+      path: "../url_launcher_web"
+      relative: true
+    source: path
+    version: "2.4.1"
+  url_launcher_windows:
+    dependency: "direct main"
+    description:
+      path: "../url_launcher_windows"
+      relative: true
+    source: path
+    version: "3.1.4"
   vector_math:
     dependency: transitive
     description:
