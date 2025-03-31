@@ -47,6 +47,7 @@ class UrlLauncherIOS extends UrlLauncherPlatform {
     required bool universalLinksOnly,
     required Map<String, String> headers,
     String? webOnlyWindowName,
+    bool withAndroidFlags = false,
   }) async {
     final PreferredLaunchMode mode;
     if (useSafariVC) {
@@ -57,13 +58,17 @@ class UrlLauncherIOS extends UrlLauncherPlatform {
       mode = PreferredLaunchMode.externalApplication;
     }
     return launchUrl(
-        url,
-        LaunchOptions(
-            mode: mode,
-            webViewConfiguration: InAppWebViewConfiguration(
-                enableDomStorage: enableDomStorage,
-                enableJavaScript: enableJavaScript,
-                headers: headers)));
+      url,
+      LaunchOptions(
+        mode: mode,
+        webViewConfiguration: InAppWebViewConfiguration(
+          enableDomStorage: enableDomStorage,
+          enableJavaScript: enableJavaScript,
+          headers: headers,
+        ),
+        withAndroidFlags: withAndroidFlags,
+      ),
+    );
   }
 
   @override

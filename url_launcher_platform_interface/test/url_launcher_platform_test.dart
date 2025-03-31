@@ -15,6 +15,7 @@ class CapturingUrlLauncher extends UrlLauncherPlatform {
   bool? universalLinksOnly;
   Map<String, String> headers = <String, String>{};
   String? webOnlyWindowName;
+  bool withAndroidFlags = false;
 
   @override
   final LinkDelegate? linkDelegate = null;
@@ -29,6 +30,7 @@ class CapturingUrlLauncher extends UrlLauncherPlatform {
     required bool universalLinksOnly,
     required Map<String, String> headers,
     String? webOnlyWindowName,
+    bool withAndroidFlags = false,
   }) async {
     this.url = url;
     this.useSafariVC = useSafariVC;
@@ -38,6 +40,7 @@ class CapturingUrlLauncher extends UrlLauncherPlatform {
     this.universalLinksOnly = universalLinksOnly;
     this.headers = headers;
     this.webOnlyWindowName = webOnlyWindowName;
+    this.withAndroidFlags = withAndroidFlags;
 
     return true;
   }

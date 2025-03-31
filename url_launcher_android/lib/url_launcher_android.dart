@@ -59,17 +59,21 @@ class UrlLauncherAndroid extends UrlLauncherPlatform {
     required bool universalLinksOnly,
     required Map<String, String> headers,
     String? webOnlyWindowName,
+    bool withAndroidFlags = false,
   }) async {
     return launchUrl(
         url,
         LaunchOptions(
-            mode: useWebView
-                ? PreferredLaunchMode.inAppWebView
-                : PreferredLaunchMode.externalApplication,
-            webViewConfiguration: InAppWebViewConfiguration(
-                enableDomStorage: enableDomStorage,
-                enableJavaScript: enableJavaScript,
-                headers: headers)));
+          mode: useWebView
+              ? PreferredLaunchMode.inAppWebView
+              : PreferredLaunchMode.externalApplication,
+          webViewConfiguration: InAppWebViewConfiguration(
+            enableDomStorage: enableDomStorage,
+            enableJavaScript: enableJavaScript,
+            headers: headers,
+          ),
+          withAndroidFlags: withAndroidFlags,
+        ));
   }
 
   @override
@@ -111,8 +115,11 @@ class UrlLauncherAndroid extends UrlLauncherPlatform {
         ),
       );
     } else {
-      succeeded =
-          await _hostApi.launchUrl(url, options.webViewConfiguration.headers);
+      succeeded = await _hostApi.launchUrl(
+        url,
+        options.webViewConfiguration.headers,
+        options.withAndroidFlags,
+      );
     }
 
     // TODO(stuartmorgan): Remove this special handling as part of a

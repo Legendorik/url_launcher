@@ -298,7 +298,7 @@ public class Messages {
     Boolean canLaunchUrl(@NonNull String url);
     /** Opens the URL externally, returning true if successful. */
     @NonNull
-    Boolean launchUrl(@NonNull String url, @NonNull Map<String, String> headers);
+    Boolean launchUrl(@NonNull String url, @NonNull Map<String, String> headers, @NonNull boolean withFlags);
     /**
      * Opens the URL in an in-app Custom Tab or WebView, returning true if it opens successfully.
      */
@@ -367,8 +367,9 @@ public class Messages {
                 ArrayList<Object> args = (ArrayList<Object>) message;
                 String urlArg = (String) args.get(0);
                 Map<String, String> headersArg = (Map<String, String>) args.get(1);
+                boolean withFlags = (boolean) args.get(2);
                 try {
-                  Boolean output = api.launchUrl(urlArg, headersArg);
+                  Boolean output = api.launchUrl(urlArg, headersArg, withFlags);
                   wrapped.add(0, output);
                 } catch (Throwable exception) {
                   wrapped = wrapError(exception);

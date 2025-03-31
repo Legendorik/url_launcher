@@ -81,6 +81,7 @@ class MockUrlLauncher extends Fake
     required bool universalLinksOnly,
     required Map<String, String> headers,
     String? webOnlyWindowName,
+    bool withAndroidFlags = false,
   }) async {
     expect(url, this.url);
     expect(useSafariVC, this.useSafariVC);

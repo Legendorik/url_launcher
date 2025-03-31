@@ -68,9 +68,7 @@ final class UrlLauncher implements UrlLauncherApi {
     Intent launchIntent = new Intent(Intent.ACTION_VIEW);
     launchIntent.setData(Uri.parse(url));
     String componentName = intentResolver.getHandlerComponentName(launchIntent);
-    ComponentName componentNameOrig = intent.resolveActivity(context.getPackageManager());
     if (BuildConfig.DEBUG) {
-      Log.i(TAG, "COMPONENT " + componentNameOrig.toString());
       Log.i(TAG, "component name for " + url + " is " + componentName);
     }
     if (componentName == null) {
@@ -82,7 +80,7 @@ final class UrlLauncher implements UrlLauncherApi {
   }
 
   @Override
-  public @NonNull Boolean launchUrl(@NonNull String url, @NonNull Map<String, String> headers) {
+  public @NonNull Boolean launchUrl(@NonNull String url, @NonNull Map<String, String> headers, @NonNull boolean withFlags) {
     ensureActivity();
     assert activity != null;
 
@@ -90,6 +88,10 @@ final class UrlLauncher implements UrlLauncherApi {
         new Intent(Intent.ACTION_VIEW)
             .setData(Uri.parse(url))
             .putExtra(Browser.EXTRA_HEADERS, extractBundle(headers));
+    Log.i(TAG, "WITH FLAGS " + (withFlags ? "true" : "false"));
+    if (withFlags) {
+      launchIntent = launchIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+    }
     try {
       activity.startActivity(launchIntent);
     } catch (ActivityNotFoundException e) {

@@ -150,7 +150,8 @@ class UrlLauncherApi {
   }
 
   /// Opens the URL externally, returning true if successful.
-  Future<bool> launchUrl(String url, Map<String, String> headers) async {
+  Future<bool> launchUrl(
+      String url, Map<String, String> headers, bool withFlags) async {
     final String pigeonVar_channelName =
         'dev.flutter.pigeon.url_launcher_android.UrlLauncherApi.launchUrl$pigeonVar_messageChannelSuffix';
     final BasicMessageChannel<Object?> pigeonVar_channel =
@@ -159,8 +160,8 @@ class UrlLauncherApi {
       pigeonChannelCodec,
       binaryMessenger: pigeonVar_binaryMessenger,
     );
-    final List<Object?>? pigeonVar_replyList =
-        await pigeonVar_channel.send(<Object?>[url, headers]) as List<Object?>?;
+    final List<Object?>? pigeonVar_replyList = await pigeonVar_channel
+        .send(<Object?>[url, headers, withFlags]) as List<Object?>?;
     if (pigeonVar_replyList == null) {
       throw _createConnectionError(pigeonVar_channelName);
     } else if (pigeonVar_replyList.length > 1) {
