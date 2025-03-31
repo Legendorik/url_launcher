@@ -71,6 +71,7 @@ class LaunchOptions {
     this.webViewConfiguration = const InAppWebViewConfiguration(),
     this.browserConfiguration = const InAppBrowserConfiguration(),
     this.webOnlyWindowName,
+    this.withAndroidFlags = false,
   });
 
   /// The requested launch mode.
@@ -86,4 +87,5 @@ class LaunchOptions {
   ///
   /// Default behaviour when unset should be to open the url in a new tab.
   final String? webOnlyWindowName;
+  final bool withAndroidFlags;
 }
